@@ -4,21 +4,24 @@ import axios from "axios";
 import useFetch from "./../../hooks/useFetch";
 
 const Featured = () => {
-  const fetchData = async () => {
-    // const res = await axios.get(
-    //   "/api/hotels/countHotelByCity?cities=kolkata,siliguri,barrackpore"
-    // );
-    // console.log(res.data);
-  };
+  // const fetchData = async () => {
+  //   const res = await axios.get(
+  //     "/api/hotels/countHotelByCity?cities=kolkata,siliguri,barrackpore"
+  //   );
+  //   console.log(res.data);
+  // };
 
   const { data, loading, error } = useFetch(
     "/api/hotels/countHotelByCity?cities=kolkata,siliguri,barrackpore"
   );
   console.log(data);
+  // useEffect((e) => {
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="featured">
-      {loading ? (
+      {loading || data.length === 0 ? (
         "loading please wait..."
       ) : (
         <>

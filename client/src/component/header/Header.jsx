@@ -162,7 +162,11 @@ const Header = ({ show }) => {
                 )}
               </div>
               <div>
-                <button onClick={handleSearch} className="headerSearchButton">
+                <button
+                  onClick={handleSearch}
+                  disabled={!destination}
+                  className="headerSearchButton"
+                >
                   Search
                 </button>
               </div>

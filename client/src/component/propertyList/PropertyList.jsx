@@ -13,13 +13,13 @@ const PropertyList = () => {
   ];
   return (
     <div className="pList">
-      {loading
+      {loading || data.length === 0
         ? "Loading..."
         : data &&
           images.map((image, i) => (
             <>
               <div className="pListItem" key={i}>
-                <img src={images[i]} alt="" className="pListImg" />
+                <img src={image} alt="" className="pListImg" />
                 <div className="pListTitles">
                   <h1>{data[i].type}</h1>
                   <h2>
