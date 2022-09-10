@@ -7,17 +7,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { addDays, format } from "date-fns";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 const Header = ({ show }) => {
   const [openCalender, setOpenCalender] = useState(false);
   const [openVisitor, setOpenVisitor] = useState(false);
   const [destination, setDestination] = useState("");
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: addDays(new Date(), 1),
@@ -27,11 +28,16 @@ const Header = ({ show }) => {
   const [adult, setadult] = useState(1);
   const [children, setchildren] = useState(0);
   const [room, setroom] = useState(1);
+  const { dispatch } = useContext(SearchContext);
 
   const navigate = useNavigate();
   const handleSearch = () => {
+    dispatch({
+      type: "NEW_SEARCH",
+      payload: { destination, dates, adult, children, room },
+    });
     navigate("/hotels", {
-      state: { destination, date, adult, children, room },
+      state: { destination, dates, adult, children, room },
     });
   };
 
@@ -91,16 +97,16 @@ const Header = ({ show }) => {
                   className="headerSearchText"
                   onClick={() => setOpenCalender(!openCalender)}
                 >
-                  {`${format(date[0].startDate, "dd/MM/yyyy")}`} To{" "}
-                  {`${format(date[0].endDate, "dd/MM/yyyy")}`}
+                  {`${format(dates[0].startDate, "dd/MM/yyyy")}`} To{" "}
+                  {`${format(dates[0].endDate, "dd/MM/yyyy")}`}
                 </span>
                 {openCalender && (
                   <DateRange
                     className="calenderModalContainer"
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     direction="horizontal"
                   />
                 )}
