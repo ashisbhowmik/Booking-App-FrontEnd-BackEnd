@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Featured from "../../component/featured/Featured";
 import Navbar from "../../component/navbar/Navbar";
 import Header from "../../component/header/Header";
@@ -7,8 +7,15 @@ import PropertyList from "../../component/propertyList/PropertyList";
 import FeaturedProperties from "../../component/featuredProperties/FeaturedProperties";
 import MailList from "../../component/mailList/MailList";
 import Footer from "../../component/footer/Footer";
+import { AuthToken } from './../../env/envfile';
 
 const Home = () => {
+  // useEffect(() => {
+    
+  //   console.log("Auth token for refresh is 😘❎❎",AuthToken)
+
+  // },[])
+
   return (
     <div>
       <Navbar />

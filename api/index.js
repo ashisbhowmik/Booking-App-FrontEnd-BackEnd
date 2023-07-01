@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 dotenv.config();
-
+const port = process.env.PORT || 8000;
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8000, () => {
+app.listen(port, () => {
   connect();
   console.log("Connected with backend..");
 });
