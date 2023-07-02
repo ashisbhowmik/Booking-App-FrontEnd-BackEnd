@@ -2,6 +2,7 @@
 
 
 src/env/
+src/component/footer
 /node_modules
 # dependencies
 /.pnp
