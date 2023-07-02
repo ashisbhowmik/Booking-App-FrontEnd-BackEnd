@@ -1,8 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 
-src/env/
-/src/component/footer/footer.css/
+src/component/constants/
 /node_modules
 # dependencies
 /.pnp
