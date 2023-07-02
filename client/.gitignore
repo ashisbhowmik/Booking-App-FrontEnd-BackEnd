@@ -2,7 +2,7 @@
 
 
 src/env/
-src/component/footer
+src/component/footer/footer.css
 /node_modules
 # dependencies
 /.pnp
